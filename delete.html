@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue.set </title>
+		<style>
+			ul,li{
+				list-style: none;
+			}
+            .flex{
+                display: flex;
+            }
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>Vue.set()</h2>
+			<ul>
+                <li v-for="(item,key,index) in valObj" :key="index" class="flex">
+                    <p>姓名：{{key}}</p>
+                    <p>年龄：{{item.age}}</p>
+                    <p>部门:{{item.dept}}</p>
+                    <button @click="deleteFunc(key)">删除</button>
+                </li>
+            </ul>
+
+            <form>
+                <label >
+                    姓名 <input v-model="form.name" />
+                </label>
+                <label >
+                    年龄 <input v-model="form.age" />
+                </label>
+                <label >
+                    部门 <input v-model="form.dept" />
+                </label>
+            </form>
+            <button @click="addPerson">按钮</button>
+		</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var app = new Vue({
+				name:'app',
+				el:'#app',
+				data:{
+                    valObj:{
+                        Alice:{
+                            name:'Alice',
+                            age:20,
+                            dept:'dept1'
+                        },
+                        John:{
+                            name:'John',
+                            age:24,
+                            dept:'dept2'
+                        }
+                    },
+                    form:{
+                        name:'',
+                        age:undefined,
+                        dept:''
+                    }
+				},
+				methods:{
+					addPerson(){
+                        let obj = Object.assign({},this.form)
+                        this.$set(this.valObj,obj.name,obj)
+                        this.form = {
+                            name:'',
+                            age:undefined,
+                            dept:''
+                        }
+                    },
+                    deleteFunc(params){
+                        let obj = Object.assign({},this.valObj[params])
+                        this.$delete(this.valObj,obj.name)
+                    }
+				}
+			})
+		</script>
+	</body>
+</html>

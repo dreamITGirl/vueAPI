@@ -27,4 +27,23 @@
    - 注意点：
    注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。
 
+4. vue.delete(target,proxyName/index)
+    - [demo](https://github.com/dreamITGirl/vueAPI/blob/main/delete.html)
+    - 用法：
+    删除对象的 property。如果对象是响应式的，确保删除能触发更新视图。
+    这个方法主要用于避开 Vue 不能检测到 property 被删除的限制，但是你应该很少会使用它。
+    - 注意点：
+    目标对象不能是一个 Vue 实例或 Vue 实例的根数据对象。
+
+5. vue.directive(id,[definition]) 和 vue.filter(id,[definition]) 类似
+    - [demo](https://github.com/dreamITGirl/vueAPI/blob/main/directive.html)
+    - 用法：注册全局/局部指令，自定义指令
+    - 注意点都写在demo里。如果全局使用，建议封装成单个文件，按需引入即可。
+
+6. vue.filter(id,[definition])
+    - [demo](https://github.com/dreamITGirl/vueAPI/blob/main/filter.html)
+    - 用法：注册全局/局部指令，自定义指令
+    - 使用场景：
+        - 用来格式化展示数据
+
 

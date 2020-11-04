@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue directive</title>
+		<style>
+			ul,li{
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>Vue.directive()</h2>
+			<ul>
+				<li v-for="item in list" :key="item.id" >{{item.name}}</li>
+			</ul>
+            <p v-changecolor="bgcolor">测试自定义指令directive</p>
+            <p v-idata="money"></p>
+            <p v-initdata="money"></p>
+		</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+            // 注意点：
+            /**
+             * 定义的自定义指令需要放在new Vue函数上面或者指令名存在大写字母，否则会报错
+             * 报错信息： Failed to resolve directive: xxx(指令名)
+             * **/
+            // 全局注册方式
+             Vue.directive('changecolor',function (el,binding) {
+                el.style.backgroundColor = binding.value
+            })
+            
+            Vue.directive('idata',function (el,binding) {
+                el.innerHTML = '$'+binding.value
+            })
+
+			var app = new Vue({
+				name:'app',
+				el:'#app',
+				data:{
+					list:[
+						{
+							id:1,
+							name:'test'
+						},
+						{
+							id:2,
+							name:'owner'
+						},
+						{
+							id:3,
+							name:'alice'
+						}
+                    ],
+                    bgcolor:'#afa',
+                    money:100
+                },
+                // 局部注册
+                directives:{
+                    initdata:{
+                        bind(el,binding){
+                            el.style.backgroundColor = 'red'
+                            el.innerHTML = binding.value+'元'
+                        }
+                    }
+                }
+            })
+           
+		</script>
+	</body>
+</html>
