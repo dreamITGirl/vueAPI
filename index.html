@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue API 的学习1</title>
+		<style>
+			ul,li{
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>Vue.extend()构造器函数</h2>
+			<ul>
+				<li v-for="item in list" :key="item.id" >{{item.name}}</li>
+			</ul>
+			<div id="navList"></div>
+		</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var app = new Vue({
+				name:'app',
+				el:'#app',
+				data:{
+					list:[
+						{
+							id:1,
+							name:'test'
+						},
+						{
+							id:2,
+							name:'owner'
+						},
+						{
+							id:3,
+							name:'alice'
+						}
+					]
+				},
+				methods:{
+					
+				}
+			})
+			// 创建一个通用的构造器函数，创建一次，可不断复用
+			var Profile = Vue.extend({
+				template:'<div style="display: flex;"><p v-for="(item,i) in nav" :key="item.id">{{item.name}}</p></div>',
+				data(){
+					return {
+						nav:[
+							{
+								id:'0',
+								name:'首页'
+							},
+							{
+								id:'1',
+								name:'关于'
+							},
+							{
+								id:'2',
+								name:'设置'
+							}
+						]
+					}
+				}
+			})
+			new Profile().$mount('#navList')
+		</script>
+	</body>
+</html>
