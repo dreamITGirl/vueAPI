@@ -16,4 +16,15 @@
 
     - [demo](https://github.com/dreamITGirl/vueAPI/blob/main/nextTick.html)
     - 用法：
-    - 在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
+    在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
+
+3. vue.set(target,proxyName/index,value)
+
+   - [demo](https://github.com/dreamITGirl/vueAPI/blob/main/set.html)
+   - 用法：
+   向响应式对象中添加一个 property，并确保这个新 property 同样是响应式的，且触发视图更新。
+   它必须用于向响应式对象上添加新 property，因为 Vue 无法探测普通的新增 property 
+   - 注意点：
+   注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。
+
+
