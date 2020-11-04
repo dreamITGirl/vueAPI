@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue nextTick </title>
+		<style>
+            .showBg{
+                background-color: aquamarine;
+            }
+        </style>
+	</head>
+	<body>
+		<div id="app">
+            <h2>Vue.nextTick</h2>
+            <ul :class="{
+                showBg:showBg
+            }">
+                <li v-for="item in list" :key="item.id">{{item.name}}</li>
+            </ul>
+            <form>
+                <label>
+                    id：<input v-model="form.id" />
+                </label>
+                <label>
+                    name:<input v-model="form.name">
+                </label>
+            </form>
+            <button @click.stop.prevent="changeVal">按钮</button>
+		</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var app = new Vue({
+				name:'app',
+				el:'#app',
+				data:{
+					list:[
+						{
+							id:1,
+							name:'test'
+						},
+						{
+							id:2,
+							name:'owner'
+						},
+						{
+							id:3,
+							name:'alice'
+						}
+					],
+                    form:{
+                        id:'',
+                        name:''
+                    },
+                    showBg:false
+				},
+				methods:{
+					changeVal(){
+                        let obj = Object.assign({},this.form)
+                        this.list.push(obj)
+                        this.$nextTick(() => {
+                            this.showBg = true
+                            this.form.id = ''
+                            this.form.name = ''
+                        })
+                        setTimeout(() => {
+                            this.showBg = false
+                            
+                        },1000)
+                    }
+				}
+			})
+		</script>
+	</body>
+</html>
