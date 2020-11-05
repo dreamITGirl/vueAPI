@@ -46,4 +46,22 @@
     - 使用场景：
         - 用来格式化展示数据
 
+7. data
+   - [demo](https://github.com/dreamITGirl/vueAPI/blob/main/data.html) 
+   - 限制：组件中，data必须是一个函数
+   - [详细解析](https://cn.vuejs.org/v2/api/#data)：
+    - data是Vue实例的数据对象。Vue会递归将data的property转化为getter/setter,从而让data中的property能够响应数据变化。
+    对象必须是纯粹的对象(含有0个或多个的key/value对)。 
+    **data中创建的实例和created创建的实例有什么区别？**
+    - 在浏览器API创建的原生对象，原型上的property会被忽略。也就是说，data只能是数据，不推荐观察拥有状态行为的对象。一旦观察过，
+    就无法在根数据对象上添加响应式的property。这也是在data中创建的实例和在created创建的实例的区别
+
+    - 实例创建后，可以通过vm.$data访问原始数据对象。Vue实例代理了data对象上所有的property.
+    **为什么组件中的data必须是一个函数？**
+    - 当组件被定义，data就必须返回一个初始化数据的对象函数，因为组件可能会被用来创建多个实例，如果data仍然是一个对象，则所有的实例
+    都将**共享引入**同一个数据对象！通过提供data函数，每次创建一个新的实例后，我们能够调用data函数，从而返回初始化数据的一个全新的数据副本对象。
+    如果有需要的时候，可以通过```vm.$data```传入```JSON.parse(JSON.stringify(...))```得到深拷贝的原始数据对象
+
+    
+
 
