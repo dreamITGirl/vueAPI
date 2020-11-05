@@ -47,6 +47,13 @@
         - 用来格式化展示数据
 
 7. data
+   - [demo1](https://github.com/dreamITGirl/vueAPI/blob/main/data1.html) 是关于实现响应式原理的代码思路
+   - [demo2](https://github.com/dreamITGirl/vueAPI/blob/main/data2.html) 是关于
+   ```Object.defineProperty```的讲解以及响应式原理的理解
+   - 推荐视频：
+    https://www.bilibili.com/video/BV1c4411C7dW
+    https://www.bilibili.com/video/BV1o4411k7fa
+    https://www.bilibili.com/video/BV1DT4y1L7sh
    - 限制：组件中，data必须是一个函数
    - [详细解析](https://cn.vuejs.org/v2/api/#data)：
     - data是Vue实例的数据对象。Vue会递归将data的property转化为getter/setter,从而让data中的property能够响应数据变化。

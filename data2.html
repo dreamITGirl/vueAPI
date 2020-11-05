@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8" />
+        <title>响应式原理的理解2</title>
+    </head>
+    <body>
+
+        <script>
+            // Object.defineProperty()
+            // 这里定义一个类Vue
+            class Vue{
+                constructor(opts){
+                    this.initData(opts.data)
+                }
+                initData(data){
+                    for (const key in data) {
+                        Object.defineProperty(this,key,{
+                            set(v){
+                                console.log(v,'v===')
+                                this.render()
+                            },
+                            get(){
+                            }
+                        })
+                    }
+                }
+                render(){
+                    console.log('重新渲染了DOM')
+                }
+            }
+            var vm = new Vue({
+                data:{
+                    name:'Alice',
+                    age:20,
+                    dept:'dept1'
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8" />
+        <title>响应式原理的理解1</title>
+    </head>
+    <body>
+        <div id="app">
+
+        </div>
+
+
+        <script>
+            // 1. 实现了响应式数据的基本功能
+            class Vue {
+                constructor(){
+
+                }
+                set val(v){
+                    this.render()
+                }
+                get val(){
+
+                }
+                render(){
+                    console.log('重新渲染了页面')
+                }
+            
+            } 
+            var vm = new Vue()
+            // 浏览器中输入一下命令后就可以看到，render函数中的console输出出来了
+            vm.val = '123'
+
+        </script>
+    </body>
+</html>
