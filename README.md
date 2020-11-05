@@ -47,7 +47,6 @@
         - 用来格式化展示数据
 
 7. data
-   - [demo](https://github.com/dreamITGirl/vueAPI/blob/main/data.html) 
    - 限制：组件中，data必须是一个函数
    - [详细解析](https://cn.vuejs.org/v2/api/#data)：
     - data是Vue实例的数据对象。Vue会递归将data的property转化为getter/setter,从而让data中的property能够响应数据变化。
@@ -68,5 +67,9 @@
     每个组件的实例都会对应一个watcher的实例,它会在组件渲染的过程中把接触到的数据property记录为依赖，之后当依赖项的setter触发的时候，会告诉watcher，从而使它关联的组件重新渲染，这也是发布观察者订阅模式
 
     ![响应式数据.png](https://i.loli.net/2020/11/05/ar7SD6EhnOtzHTI.png)
+
+    - 检测注意事项：
+    Vue不能监听数组和对象的变化 (我们可以通过一些方法来回避这个限制并保证它们的响应性)
+
 
 
